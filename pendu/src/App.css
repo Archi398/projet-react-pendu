@@ -2,6 +2,54 @@ body {
   text-align: center;
 }
 
+.form{
+  margin-top: 3%;
+}
+
+.size3{
+  width: 300px;
+}
+
+#word-input{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#life{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.input input[type="text"]{
+  width: 50px;
+  border: 0;
+  font-size: 30px;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+
+.input input[type="submit"]{
+  border: 0;
+  color: white;
+  background: rgb(121, 121, 199);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.input input[type="submit"]:hover{
+  background: rgb(67, 67, 155);
+}
+
+
 .TableScore {
   margin-left: auto; 
   margin-right: auto;
@@ -15,7 +63,7 @@ body {
   padding: 8px;
 }
 
-.TableScore tr:nth-child(even){background-color: rgb(76, 76, 124);}
+.TableScore tr:nth-child(even){background-color: rgb(121, 121, 199);}
 
 .TableScore tr:hover {background-color: rgb(67, 67, 155);}
 
@@ -42,6 +90,7 @@ body {
 
 .btn {
   border: none;
+  height: 40px;
   padding: 10px 30px;
   border-radius: 4px;
   margin-top: 20px;
@@ -50,9 +99,10 @@ body {
   transition: 0.2s all linear;
 }
 
-#div-btn{
+#div-header{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-content: center;
 }
 
 .para {

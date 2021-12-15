@@ -1,9 +1,10 @@
 import './App.css';
-import React, { useContext } from 'react';
-import { map } from "lodash";
+import React, { useContext, useEffect } from 'react';
 import { GetData } from './api/getData';
 import { ThemeContext } from "./darkMode/ThemeContext";
 import Word from './components/word.js';
+import Ranking from './components/ranking';
+import Input from './components/inputLetter';
 import SwitchButton from "./darkMode/Button";
 
 
@@ -14,47 +15,36 @@ function App() {
   const word = GetData('word');
   const score = GetData('score');
 
-  console.log(word.data);
-  console.log(score.data);
-  
-
   return (
     <div className={`bg ${darkMode ? "bg-dark" : "bg-light"}`}>
-      <h1 className={`heading ${darkMode ? "heading-dark" : "heading-light"}`}>Jeux du Pendu</h1>
-      <div id="div-btn">
+      <div id="div-header">
+        <p className={`para ${theme ? "para-dark" : "para-light"} size3`}>Made by Archi with ❤️</p>
+        <h1 className={`heading ${darkMode ? "heading-dark" : "heading-light"} size3`}>Hangman games</h1>
         <SwitchButton />
       </div>
 
-      {/* <Word
-        word={word.word}
+      <div id="word-input">
+        <div>
+          {word !== undefined ? <Word
+            word={word.data.word}
+            theme={darkMode}
+          /> : null}
+
+          <div id="life">
+            <p className={`para ${theme ? "para-dark" : "para-light"}`}>Your life : <span id="currentScore">10</span>/10</p>
+          </div>
+        </div>
+
+        <Input
+          theme={darkMode}
+        />
+      </div>
+
+      {score !== undefined ? <Ranking
+        score={score.data}
         theme={darkMode}
-      /> */}
+      /> : null}
 
-      <p>{word.word}</p>
-
-
-      <table className="TableScore">
-        <thead>
-          <tr>
-            <th className={`para ${darkMode ? "para-dark" : "para-light"}`}>Ranking</th>
-            <th className={`para ${darkMode ? "para-dark" : "para-light"}`}>Avatar</th>
-            <th className={`para ${darkMode ? "para-dark" : "para-light"}`}>Username</th>
-            <th className={`para ${darkMode ? "para-dark" : "para-light"}`}>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {map(score.data, user => (
-            <React.Fragment key={user.username}>
-              <tr>
-                <td className={`para ${darkMode ? "para-dark" : "para-light"}`}>{user.position}</td>
-                <td><img src={user.avatar} alt={user.username} /></td>
-                <td className={`para ${darkMode ? "para-dark" : "para-light"}`}>{user.username}</td>
-                <td className={`para ${darkMode ? "para-dark" : "para-light"}`}>{user.score}</td>
-              </tr>
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }

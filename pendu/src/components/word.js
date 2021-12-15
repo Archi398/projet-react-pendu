@@ -6,12 +6,10 @@ const Word = ({ theme, word }) => {
 	return (
 		<div>
 			{
-				word.split('').map(
+				word.toLowerCase().split('').map(
 					(letter, key) => {
 						
-						return <span id={key} className={`para ${theme ? "para-dark" : "para-light"}`}>
-							{letter}
-						</span>
+						return <span id={key} className={`para ${theme ? "para-dark" : "para-light"} letter_${letter}`}>&nbsp;?&nbsp;</span>
 					}
 				)
 			}
