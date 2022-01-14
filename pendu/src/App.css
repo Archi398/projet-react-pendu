@@ -13,6 +13,7 @@ body {
 #word-input{
   display: flex;
   align-content: center;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -148,4 +149,15 @@ body {
   background-color: #fff;
   color: #222;
 
+}
+
+
+
+@media screen and (max-width: 700px)
+{
+  #div-header{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+  }
 }
